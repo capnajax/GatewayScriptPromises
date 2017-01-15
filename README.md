@@ -1,6 +1,6 @@
 # GatewayScript promises example
 
-Access some external services and mix their results.
+The GatewayScript to look at is in `GatewayScript_policy.js`
 
 ## Setup
 
@@ -9,10 +9,10 @@ up a simple web service on port `3003` with a deliberately slowed response.
 1. Create a `Set Variable` policy to set `promisedservice` to the server you
 set up `service.js` on.
 <div style="text-align:center"><img alt="the set-variable policy that sets promisedservice to your server's url" src="https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/images/set-variable.png" width="220" /></div><br/>
-1. Set up a `GatewayScript` policy, and paste in the source of `policy.js`.
+1. Set up a `GatewayScript` policy, and paste in the source of 
+`GatewayScript_policy.js`.
 
 Your policy chain should look like this:
-
 
 <div style="text-align:center"><img alt="policy chain with a 'set-variable' and a 'gatewayscript' policy" src="https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/images/policychain.png" width="486" /></div><br/>
 
