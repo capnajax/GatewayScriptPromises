@@ -17,7 +17,7 @@ Your policy chain should look like this:
 <div style="text-align:center"><img alt="policy chain with a 'set-variable' and a 'gatewayscript' policy" src="https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/images/policychain.png" width="486" /></div><br/>
 
 The **Source**'s `assembly` will look very much like that of 
-[yaml][this Open API spec]
+[this Open API spec][yaml]
 
 ## What it does
 
@@ -56,8 +56,10 @@ data from the promise that failed.
 ## Resources
 
 [ECMAScript 6 Promises (Mozilla)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
 [GatewayScript Code Examples](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/rapim_gwscript_codesnip.html)
-[yaml][this Open API spec]
+
+[This Open API spec][yaml]
 
 
 [yaml]: https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/gatewayscriptpromises_1.0.0.yaml "Example Open API doc"
