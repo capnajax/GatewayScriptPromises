@@ -8,12 +8,11 @@ Access some external services and mix their results.
 up a simple web service on port `3003` with a deliberately slowed response.
 1. Create a `Set Variable` policy to set `promisedservice` to the server you
 set up `service.js` on.
-![alt text][set-variable]{:width="220px"}
+<img alt="the set-variable policy that sets promisedservice to your server's url" src="https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/images/set-variable.png" width="220" />
 1. Set up a `GatewayScript` policy, and paste in the source of `policy.js`.
 
 Your policy chain should look like this:
-
-![alt text][policy-chain]{:width="486px"}
+<img alt="policy chain with a 'set-variable' and a 'gatewayscript' policy" src="https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/images/policychain.png" width="486" />
 
 The **Source**'s `assembly` will look very much like that of 
 [yaml][this Open API spec]
@@ -56,8 +55,8 @@ the promise that failed.
 
 [ECMAScript 6 Promises (Mozilla)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 [GatewayScript Code Examples](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/rapim_gwscript_codesnip.html)
+[yaml][this Open API spec]
 
-[set-variable]: https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/images/set-variable.png "the set-variable policy that sets promisedservice to "
+
 [yaml]: https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/gatewayscriptpromises_1.0.0.yaml "Example Open API doc"
-[policy-chain]: https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/images/policychain.png "policy chain with a 'set-variable' and a 'gatewayscript' policy"
 
