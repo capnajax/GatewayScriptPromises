@@ -8,12 +8,12 @@ Access some external services and mix their results.
 up a simple web service on port `3003` with a deliberately slowed response.
 1. Create a `Set Variable` policy to set `promisedservice` to the server you
 set up `service.js` on.
-![alt text][set-variable]
+![alt text][set-variable]{:width="220px"}
 1. Set up a `GatewayScript` policy, and paste in the source of `policy.js`.
 
 Your policy chain should look like this:
 
-![alt text][policy-chain]
+![alt text][policy-chain]{:width="486px"}
 
 The **Source**'s `assembly` will look very much like that of 
 [yaml][this Open API spec]
