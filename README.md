@@ -50,8 +50,8 @@ occurred).
 
 This waits until either all promises are resolved, or at least
 one promise is rejected. The `values` parameter is an array with
-the data from each promise. The `error` is the `reject` data from
-the promise that failed.
+the `resolve` data from each promise. The `error` is the `reject` 
+data from the promise that failed.
 
 ## Resources
 
