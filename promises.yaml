@@ -1,0 +1,39 @@
+swagger: '2.0'
+info:
+  x-ibm-name: gatewayscriptpromises
+  title: GatewayScriptPromises
+  version: 1.0.0
+schemes:
+  - https
+host: tdw5dp.apicww.cloud
+basePath: /gatewayscriptpromises
+produces:
+  - application/json
+securityDefinitions: {}
+security: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - set-variable:
+          title: promisedservice
+          actions:
+            - set: promisedservice
+              value: 'http://gpu.apicww.cloud:3003'
+          description: ''
+      - gatewayscript:
+          title: gatewayscript
+          source: "\nconst apim = require('./apim.custom.js'),\n    urlopen = require('urlopen'),\n    \n    service = apim.getvariable('promisedservice');\n\n(() => {\n\n    var startTime=new Date();\n\n    /**\n     *  @method httpGetRequest\n     *  Make a GET request to a URL\n     *  @param url the URL to get\n     *  @param resolve callback called when the request succeeds\n     *  @param reject callback called when the request fails\n     */\n    function httpGetRequest(url, resolve, reject) {\n\n        var options = {\n                target: url,\n                method: 'GET'\n            };\n\n        urlopen.open(options, (error, response) => {\n\n            if(error) {\n                reject(error);\n                return;\n            }\n\n            response.readAsJSON((error, response) => {\n\n                if(error) {\n                    reject(error);\n                    return;\n                }\n\n                resolve(response);\n\n            });\n\n        });\n\n    }\n\n    // start the \"a\" request, which will respond in 200ms\n    var promiseA = new Promise((resolve, reject) => {\n        httpGetRequest(service+'/a', resolve, reject);\n    });\n\n    // start the \"b\" request, which will respond in 400ms\n    var promiseB = new Promise((resolve, reject) => {\n        httpGetRequest(service+'/b', resolve, reject);\n    });\n\n    // when both the \"a\" and the \"b\" requests are complete, build the\n    // output.\n    Promise.all([promiseA, promiseB]).then(values => {\n\n        // promiseA gives us {\"a\":\"received a\"}\n        // promiseB gives us {\"b\":\"received b\"}\n\n        // values is [{\"a\":\"received a\"},{\"b\":\"received b\"}]\n\n        var endTime = new Date(),\n            result = {time: endTime.getTime() - startTime.getTime()};\n\n        // the time above should be very close to 400ms, which is the time \n        // it takes for the slowest service to respond\n\n        // let's combine the values into a single object\n\n        values.unshift(result);\n        Object.assign.apply(null, values);\n\n        // and output the combined object\n\n        apim.output('application/json');\n        session.output.write(result);\n\n        // writes out {\"a\":\"received a\",\"b\":\"received b\",\"time\":4xx}\n\n    }).catch(reason => {\n\n        // if any of the promises fail, this will run.\n\n        apim.output('application/json');\n        session.output.write({failure:reason});\n\n    });\n\n})();"
+  gateway: datapower-gateway
+  phase: realized
+paths:
+  /aa:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+definitions: {}
+tags: []
