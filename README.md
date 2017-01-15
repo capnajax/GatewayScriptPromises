@@ -8,11 +8,13 @@ Access some external services and mix their results.
 up a simple web service on port `3003` with a deliberately slowed response.
 1. Create a `Set Variable` policy to set `promisedservice` to the server you
 set up `service.js` on.
-<img alt="the set-variable policy that sets promisedservice to your server's url" src="https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/images/set-variable.png" width="220" />
+<div style="text-align:center"><img alt="the set-variable policy that sets promisedservice to your server's url" src="https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/images/set-variable.png" width="220" /></div><br/>
 1. Set up a `GatewayScript` policy, and paste in the source of `policy.js`.
 
 Your policy chain should look like this:
-<img alt="policy chain with a 'set-variable' and a 'gatewayscript' policy" src="https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/images/policychain.png" width="486" />
+
+
+<div style="text-align:center"><img alt="policy chain with a 'set-variable' and a 'gatewayscript' policy" src="https://raw.githubusercontent.com/capnajax/GatewayScriptPromises/master/images/policychain.png" width="486" /></div><br/>
 
 The **Source**'s `assembly` will look very much like that of 
 [yaml][this Open API spec]
