@@ -1,4 +1,4 @@
-# Example 1
+# GatewayScript promises example
 
 Access some external services and mix their results.
 
